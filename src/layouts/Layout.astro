@@ -1,0 +1,169 @@
+---
+import Header from "../components/Header.astro"
+
+interface Props {
+	title: string;
+	description?: string;
+}
+
+const {
+	title,
+	description = "Portafolio de Cristhian Rocha — FullStack & Mobile Developer especializado en React, Next.js y React Native."
+} = Astro.props;
+
+// TODO: cambia esta URL por tu dominio real al desplegar
+const siteUrl = "https://cristhianrocha.dev";
+---
+
+<!doctype html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<title>{title}</title>
+		<meta name="description" content={description} />
+		<link rel="canonical" href={siteUrl} />
+
+		<!-- Open Graph (LinkedIn, WhatsApp, etc.) -->
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content={siteUrl} />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content={`${siteUrl}/og-image.png`} />
+		<meta property="og:locale" content="es_ES" />
+
+		<!-- Twitter Card -->
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={`${siteUrl}/og-image.png`} />
+
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+
+		<!-- Tipografías: Sora (texto) + Clash Display (titulares) -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&display=swap"
+			rel="stylesheet"
+		/>
+		<link
+			href="https://api.fontshare.com/v2/css?f[]=clash-display@600,700&display=swap"
+			rel="stylesheet"
+		/>
+	</head>
+	<body>
+		<Header />
+		<slot />
+		<footer class="footer">
+			<div class="footer-wrap">
+				<p>© 2026 Cristhian Rocha · Cochabamba, Bolivia · Hecho con Astro</p>
+				<nav class="socials" aria-label="Redes sociales">
+					<a href="https://github.com/cristhian2020" target="_blank" rel="noopener noreferrer">GitHub</a>
+					<a href="https://www.linkedin.com/in/cristhian-rocha-ferrufino/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+					<a href="mailto:rochacristhian77@gmail.com">Email</a>
+				</nav>
+			</div>
+		</footer>
+	</body>
+</html>
+<style is:global>
+	:root {
+		--bg: #0a0f1e;
+		--bg-soft: #0f172a;
+		--paper: #111c33;
+		--card: #0d1730;
+		--ink: #e8eef8;
+		--muted: #94a3b8;
+		--line: rgba(148, 163, 184, 0.14);
+		--accent: #38bdf8;
+		--accent-2: #34d399;
+		--grad-a: #0ea5e9;
+		--grad-b: #4f46e5;
+	}
+	html {
+		scroll-behavior: smooth;
+		font-family: "Sora", "Segoe UI", sans-serif;
+	}
+	body {
+		margin: 0;
+		min-height: 100vh;
+		color: var(--ink);
+		background:
+			radial-gradient(circle at 88% -15%, rgba(56, 189, 248, 0.16) 0%, transparent 32%),
+			radial-gradient(circle at -5% 12%, rgba(99, 102, 241, 0.18) 0%, transparent 26%),
+			linear-gradient(145deg, var(--bg), var(--bg-soft));
+		background-attachment: fixed;
+	}
+	a {
+		color: inherit;
+	}
+	* {
+		box-sizing: border-box;
+	}
+
+	/* Accesibilidad: foco visible para navegación por teclado */
+	a:focus-visible,
+	button:focus-visible {
+		outline: 2px solid var(--accent);
+		outline-offset: 3px;
+		border-radius: 0.35rem;
+	}
+
+	/* Accesibilidad: respeto a usuarios con movimiento reducido */
+	@media (prefers-reduced-motion: reduce) {
+		html {
+			scroll-behavior: auto;
+		}
+		*,
+		*::before,
+		*::after {
+			animation-duration: 0.01ms !important;
+			animation-iteration-count: 1 !important;
+			transition-duration: 0.01ms !important;
+		}
+	}
+
+	/* Footer */
+	.footer {
+		width: min(1120px, calc(100% - 2rem));
+		margin: 0 auto;
+		padding: 0 0 2rem;
+	}
+	.footer-wrap {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 1rem;
+		flex-wrap: wrap;
+		padding: 1rem 1.2rem;
+		border-top: 1px solid rgba(148, 163, 184, 0.18);
+	}
+	.footer p {
+		margin: 0;
+		font-size: 0.85rem;
+		color: var(--muted);
+	}
+	.socials {
+		display: flex;
+		gap: 1.1rem;
+	}
+	.socials a {
+		font-size: 0.85rem;
+		font-weight: 600;
+		text-decoration: none;
+		color: var(--muted);
+		transition: color 0.2s ease;
+	}
+	.socials a:hover {
+		color: var(--accent);
+	}
+
+	@media (max-width: 640px) {
+		.footer-wrap {
+			flex-direction: column;
+			text-align: center;
+		}
+	}
+</style>
