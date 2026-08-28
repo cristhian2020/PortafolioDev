@@ -1,49 +1,79 @@
 ---
+import { Icon } from 'developer-icons/dist/icon';
 import Layout from '../layouts/Layout.astro';
-
+import { 
+  TypeScript, 
+  React as ReactIcon, 
+  NextJs, 
+  NodeJs, 
+  Python, 
+  PostgreSQL, 
+  Supabase,
+  Git, 
+  NestJS
+} from "developer-icons";
+ 
+ 
 const stack = [
-	'React / Next.js',
-	'React Native / Expo',
-	'TypeScript',
-	'Node.js / Express',
-	'FastAPI / Python',
-	'PostgreSQL / MySQL',
-	'Supabase / Firebase',
-	'Git / Scrum'
+  { name: 'React / Next.js', Icon: ReactIcon },
+  { name: 'React Native / Expo', Icon: ReactIcon },
+  { name: 'TypeScript', Icon: TypeScript },
+  { name: 'Node.js / Express', Icon: NodeJs },
+  { name: 'FastAPI / Python', Icon: Python },
+  { name: 'NestJS', Icon: NestJS},
+  { name: 'PostgreSQL / MySQL', Icon: PostgreSQL },
+  { name: 'Supabase / Firebase', Icon: Supabase },
+  { name: 'Git / Scrum', Icon: Git }
 ];
 
 const experience = [
 	{
-		company: 'Sistema LLC',
+		id: 'sistema-llc',
+		company: 'Element Sagety LLC',
 		place: 'Cliente en EE.UU. · Remoto',
 		role: 'FullStack Developer',
 		period: 'Mar 2026 — Jun 2026',
 		points: [
 			'Sistema de gestión de facturación con Next.js y Firebase: seguimiento de pagos en tiempo real y reportes financieros.',
-			'Autenticación con roles y permisos para proteger la información de la empresa.'
-		]
+			'Autenticación con roles y permisos para proteger la información de la empresa.',
+			'Landing Page con Astro, React y Tailwind CSS'
+		],
+		achievement: 'Reduje en 35% el tiempo de generación de reportes financieros.',
+		tech: ['Next.js', 'React', 'Astro', 'Firebase', 'TypeScript', 'Tailwind'],
+		isHighlight: true,
+		url: 'https://www.elementsafetyllc.com/'
 	},
 	{
-		company: 'Sistema Dental',
-		place: 'Freelance · Cochabamba, Bolivia',
+		id: 'sistema-dental',
+		company: 'Odontologia Inturias',
+		place: 'Cochabamba, Bolivia',
 		role: 'FullStack Developer',
 		period: 'Dic 2025 — Feb 2026',
 		points: [
-			'Sistema completo para clínica dental: historias clínicas, citas médicas y módulo de pagos con Next.js, Supabase y Express.'
+			'Sistema completo para clínica dental: historias clínicas, citas médicas y módulo de pagos.',
+			'Arquitectura serverless con Next.js y Supabase para escalabilidad inmediata.'
 		],
-		achievement: 'Reduje en 40% el tiempo administrativo de recepción y optimicé la agenda de especialistas.'
+		achievement: 'Reduje en 90% el tiempo administrativo de recepción y optimicé la agenda de especialistas.',
+		tech: ['Next.js', 'Supabase', 'Express', 'PostgreSQL'],
+		isHighlight: true
 	},
 	{
-		company: 'Smaigo',
+		id: 'smaigo',
+		company: 'Smaigo S.R.L',
 		place: 'Cochabamba, Bolivia',
 		role: 'FullStack / Mobile Developer',
 		period: 'Ago 2025 — Feb 2026',
 		points: [
 			'App móvil en React Native con Redux para estado complejo y sincronización de datos en tiempo real.',
 			'Backend con Firebase y Express; panel administrativo en Next.js aplicando Atomic Design.'
-		]
+		],
+		achievement: 'Mejore el rendimiento de la App en un 70% y implemente funcionalidades avanzadas.',
+		tech: ['React Native', 'Redux', 'Firebase', 'Express', 'Next.js'],
+		isHighlight: true,
+		url: 'https://smaigo.com.bo/'
 	},
 	{
+		id: 'zekiri',
 		company: 'Zekiri',
 		place: 'Cochabamba, Bolivia',
 		role: 'FullStack Developer',
@@ -52,35 +82,46 @@ const experience = [
 			'Lideré el frontend de múltiples proyectos con Next.js: arquitectura de componentes y flujo de datos.',
 			'Trabajo en equipos ágiles bajo Scrum: planning, dailies y retrospectivas.'
 		],
-		achievement: 'Consultas ~30% más rápidas tras optimizar Supabase y Firebase.'
+		achievement: 'Consultas ~30% más rápidas tras optimizar Supabase y Firebase.',
+		tech: ['Next.js', 'Supabase', 'Firebase', 'TypeScript', 'Scrum'],
+		isHighlight: false,
+		url: 'https://zekiri.io/'
+
 	}
 ];
 
 // TODO: apunta cada proyecto a su repo/demo real cuando los tengas públicos
 const projects = [
+		{
+		title: 'Landing Page Element Safety LLC',
+		description: 'Landing page para empresa de seguridad.',
+		result: 'Mejor posicionamiento en buscadores y mayor visibilidad de la empresa.',
+		tags: ['Astro', 'React', 'Tailwind'],
+		demo: 'https://www.elementsafetyllc.com/',
+		repo: 'https://github.com/cristhian2020/temporal-page'
+	},
 	{
 		title: 'Sistema de Gestión Dental',
 		description: 'Plataforma para clínica dental: historias clínicas, agenda de citas y pagos en un solo sistema.',
 		result: 'Reducción del 40% en el tiempo administrativo de recepción.',
-		tags: ['Next.js', 'Supabase', 'Express'],
+		tags: ['Next.js', 'Supabase'],
 		demo: '#',
-		repo: 'https://github.com/cristhian2020'
+		repo: 'https://github.com/cristhian2020/Sistema_Dental_Clinico'
 	},
 	{
 		title: 'Ecommerce GuitarLA',
 		description: 'Tienda online con carrito de compras, catálogo dinámico y pasarela de pago.',
 		result: 'Arquitectura headless escalable con contenido gestionado desde Strapi.',
 		tags: ['Next.js', 'Strapi', 'TypeScript'],
-		demo: '#',
-		repo: 'https://github.com/cristhian2020'
+		demo: 'https://effortless-souffle-8e9bd5.netlify.app/',
 	},
 	{
-		title: 'Sistema de Parqueo UMSS',
-		description: 'Control de ingresos y egresos vehiculares para la universidad, con reportes de ocupación.',
-		result: 'Digitalización completa del registro manual del parqueo.',
-		tags: ['PHP', 'MySQL', 'JavaScript'],
-		demo: '#',
-		repo: 'https://github.com/cristhian2020'
+		title: 'Citas Veterinaria',
+		description: 'Sistema de citas para clínica veterinaria, con historias clínicas, agenda de citas y pagos en un solo sistema.',
+		result: 'Digitalización completa del registro manual.',
+		tags: ['React', 'Firebase', 'Tailwind'],
+		demo: 'https://eclectic-sherbet-469a12.netlify.app/',
+		repo: 'https://github.com/cristhian2020/Citas-Veterinaria-React'
 	}
 ];
 ---
@@ -114,44 +155,111 @@ const projects = [
 		</section>
 
 		<section class="stripe" id="sobre-mi">
-			<article>
-				<h3>Cómo trabajo</h3>
-				<p>
-					Analizo objetivos de negocio, priorizo entregables y construyo soluciones
-					técnicas sostenibles. Cada decisión busca acelerar producto sin comprometer
-					calidad.
-				</p>
-			</article>
-			<article>
-				<h3>Fortalezas</h3>
-				<p>
-					Frontend con React y Next.js, mobile con React Native, backend con Node.js
-					y FastAPI, y bases de datos SQL y NoSQL bien modeladas.
-				</p>
-			</article>
-		</section>
+    <article>
+        <h3>Sobre mí</h3>
+        <p>
+            Soy Cristhian Rocha, desarrollador full stack de Cochabamba, Bolivia. 
+            Apasionado por transformar ideas en productos digitales funcionales y escalables.
+            Disfruto trabajar en equipos ágiles y resolver problemas complejos.
+        </p>
+    </article>
+    <article>
+        <h3>¿Qué construyo?</h3>
+        <p>
+            Desde sistemas de gestión para clínicas y comercios hasta aplicaciones móviles 
+            con React Native. Mi objetivo es siempre el mismo: crear herramientas que 
+            optimicen procesos y generen valor real para el negocio.
+        </p>
+    </article>
+</section>
 
-		<section class="block" id="experiencia">
-			<h2>Experiencia laboral</h2>
-			<ol class="timeline">
-				{experience.map((job) => (
-					<li>
-						<p class="tl-period">{job.period}</p>
-						<h3>{job.role} · {job.company}</h3>
-						<p class="tl-place">{job.place}</p>
-						<ul class="tl-points">
-							{job.points.map((point) => <li>{point}</li>)}
-						</ul>
-						{job.achievement && <p class="impact">{job.achievement}</p>}
-					</li>
-				))}
-			</ol>
-		</section>
+	<section class="block" id="experiencia">
+    <div class="section-header">
+        <h2>Experiencia profesional</h2>
+        <p class="section-subtitle">
+            2+ años construyendo producto real para clientes en Bolivia y EE.UU.
+        </p>
+    </div>
+
+    <div class="experience-grid">
+        {experience.map((job) => (
+            <div class="job-card" data-expanded="false">
+                <button 
+                    class="job-toggle" 
+                    aria-expanded="false"
+                    aria-controls={`job-content-${job.id}`}
+                    id={`job-toggle-${job.id}`}
+                    type="button"
+                >
+                    <div class="job-header">
+                        <div class="job-meta">
+                            <span class="job-period">{job.period}</span>
+                            {job.isHighlight && (
+                                <span class="job-badge">🎯 Logro destacado</span>
+                            )}
+                        </div>
+                        <h3 class="job-title">
+                            {job.role} · {job.company}
+                            <span class="job-place">{job.place}</span>
+                        </h3>
+                    </div>
+                    <div class="job-toggle-icon">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                </button>
+				{job.url && (
+					<div class="job-links">
+						<a href={job.url} target="_blank" rel="noopener noreferrer">
+							Visitar sitio web
+				
+						</a>
+					</div>
+				)}
+
+                <div 
+                    class="job-content" 
+                    id={`job-content-${job.id}`}
+                    role="region"
+                    aria-labelledby={`job-toggle-${job.id}`}
+                >
+                    <ul class="job-points">
+                        {job.points.map((point) => (
+                            <li>{point}</li>
+                        ))}
+                    </ul>
+
+                    {job.achievement && (
+                        <div class="job-achievement">
+                            <span class="achievement-icon">🚀</span>
+                            <div>
+                                <span class="achievement-label">Logro:</span>
+                                <span class="achievement-text">{job.achievement}</span>
+                            </div>
+                        </div>
+                    )}
+
+                    <div class="job-tech">
+                        {job.tech.map((tech) => (
+                            <span class="tech-tag">{tech}</span>
+                        ))}
+                    </div>
+                </div>
+            </div>
+        ))}
+    </div>
+</section>
 
 		<section class="block" id="stack">
 			<h2>Stack principal</h2>
 			<div class="tech">
-				{stack.map((item) => <span>{item}</span>)}
+				{stack.map((item) => (
+					<span>
+						{item.Icon && <item.Icon size={24} />}
+						{item.name}
+					</span>
+				))}
 			</div>
 		</section>
 
@@ -163,7 +271,7 @@ const projects = [
 						<p class="index">0{i + 1}</p>
 						<h3>{project.title}</h3>
 						<p>{project.description}</p>
-						<p class="impact">{project.result}</p>
+						<p class="impact"><b>Logro:</b> {project.result}</p>
 						<ul class="tags">
 							{project.tags.map((tag) => <li>{tag}</li>)}
 						</ul>
@@ -189,378 +297,4 @@ const projects = [
 	</main>
 </Layout>
 
-<style>
-	.shell {
-		max-width: 1120px;
-		margin: 0 auto;
-		padding: 1.3rem 1rem 3rem;
-		display: grid;
-		gap: 1rem;
-	}
 
-	.hero,
-	.block,
-	.cta,
-	.stripe article {
-		background: var(--paper);
-		border-radius: 1rem;
-		border: 1px solid var(--line);
-		box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
-	}
-
-	.hero {
-		padding: clamp(1.2rem, 3vw, 2rem);
-		display: grid;
-		grid-template-columns: 1.5fr 1fr;
-		gap: 1rem;
-		animation: reveal 500ms ease both;
-	}
-
-	.hero-copy {
-		display: grid;
-		gap: 0.8rem;
-	}
-
-	.tag {
-		margin: 0;
-		font-size: 0.78rem;
-		font-weight: 700;
-		letter-spacing: 0.12em;
-		text-transform: uppercase;
-		color: var(--accent);
-	}
-
-	h1 {
-		margin: 0;
-		font-size: clamp(1.9rem, 5vw, 3.3rem);
-		line-height: 1.02;
-		max-width: 14ch;
-		font-family: "Clash Display", "Sora", sans-serif;
-	}
-
-	.hero-copy p {
-		margin: 0;
-		color: var(--muted);
-		max-width: 58ch;
-	}
-
-	.actions {
-		display: flex;
-		gap: 0.7rem;
-		flex-wrap: wrap;
-	}
-
-	.hero-panel {
-		background: linear-gradient(160deg, #312e81, #1e1b4b);
-		border: 1px solid rgba(129, 140, 248, 0.35);
-		color: #e0e7ff;
-		border-radius: 0.9rem;
-		padding: 1rem;
-		display: flex;
-		flex-direction: column;
-		gap: 0.4rem;
-	}
-
-	.hero-panel ul {
-		margin: 0.2rem 0 0;
-		padding-left: 1.1rem;
-		display: grid;
-		gap: 0.3rem;
-	}
-
-	.hero-panel li::marker {
-		color: var(--accent);
-	}
-
-	.mini {
-		margin: 0;
-		font-size: 0.8rem;
-		text-transform: uppercase;
-		opacity: 0.75;
-	}
-
-	.hero-panel h2 {
-		margin: 0;
-		font-size: 1.7rem;
-	}
-
-	.stripe {
-		display: grid;
-		grid-template-columns: 1fr 1fr;
-		gap: 1rem;
-	}
-
-	.stripe article {
-		padding: 1.1rem;
-	}
-
-	.stripe h3 {
-		margin: 0 0 0.45rem;
-		font-size: 1.15rem;
-	}
-
-	.stripe p {
-		margin: 0;
-		color: var(--muted);
-	}
-
-	.block {
-		padding: 1.2rem;
-	}
-
-	.block h2,
-	.cta h2 {
-		margin: 0 0 0.7rem;
-		font-size: 1.45rem;
-	}
-
-	/* Timeline de experiencia */
-	.timeline {
-		list-style: none;
-		margin: 0.4rem 0 0;
-		padding: 0;
-		position: relative;
-		display: grid;
-		gap: 1.5rem;
-	}
-
-	.timeline::before {
-		content: "";
-		position: absolute;
-		left: 7px;
-		top: 8px;
-		bottom: 8px;
-		width: 2px;
-		background: linear-gradient(180deg, var(--grad-a), var(--grad-b));
-		opacity: 0.55;
-	}
-
-	.timeline > li {
-		position: relative;
-		padding-left: 2rem;
-	}
-
-	.timeline > li::before {
-		content: "";
-		position: absolute;
-		left: 0;
-		top: 4px;
-		width: 10px;
-		height: 10px;
-		border-radius: 50%;
-		background: var(--paper);
-		border: 3px solid var(--accent);
-		box-shadow: 0 0 10px rgba(56, 189, 248, 0.55);
-	}
-
-	.tl-period {
-		margin: 0;
-		font-size: 0.75rem;
-		font-weight: 700;
-		letter-spacing: 0.1em;
-		text-transform: uppercase;
-		color: var(--accent);
-	}
-
-	.timeline h3 {
-		margin: 0.2rem 0 0.1rem;
-		font-size: 1.08rem;
-	}
-
-	.tl-place {
-		margin: 0 0 0.45rem;
-		font-size: 0.85rem;
-		color: var(--muted);
-		opacity: 0.85;
-	}
-
-	.tl-points {
-		margin: 0;
-		padding-left: 1.1rem;
-		display: grid;
-		gap: 0.3rem;
-		color: var(--muted);
-	}
-
-	.tl-points li::marker {
-		color: var(--accent);
-	}
-
-	.tech {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 0.55rem;
-	}
-
-	.tech span {
-		padding: 0.45rem 0.8rem;
-		border-radius: 999px;
-		background: rgba(56, 189, 248, 0.07);
-		border: 1px solid rgba(56, 189, 248, 0.28);
-		color: #bae6fd;
-		font-weight: 700;
-		font-size: 0.92rem;
-	}
-
-	.projects {
-		display: grid;
-		grid-template-columns: repeat(3, minmax(0, 1fr));
-		gap: 0.8rem;
-	}
-
-	.card {
-		padding: 1rem;
-		border: 1px solid var(--line);
-		border-radius: 0.9rem;
-		background: var(--card);
-		animation: reveal 600ms ease both;
-		animation-delay: var(--delay);
-		display: flex;
-		flex-direction: column;
-		transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
-	}
-
-	.card:hover {
-		transform: translateY(-4px);
-		box-shadow: 0 14px 28px rgba(0, 0, 0, 0.45);
-		border-color: rgba(56, 189, 248, 0.45);
-	}
-
-	.card h3 {
-		margin: 0.25rem 0 0.5rem;
-	}
-
-	.card p {
-		margin: 0;
-		color: var(--muted);
-	}
-
-	.index {
-		font-size: 0.75rem;
-		letter-spacing: 0.1em;
-		font-weight: 700;
-		text-transform: uppercase;
-		color: var(--accent);
-	}
-
-	.impact {
-		margin-top: 0.55rem !important;
-		color: var(--accent-2) !important;
-		font-weight: 700;
-	}
-
-	.tags {
-		list-style: none;
-		display: flex;
-		flex-wrap: wrap;
-		gap: 0.35rem;
-		margin: 0.8rem 0 0;
-		padding: 0;
-	}
-
-	.tags li {
-		font-size: 0.72rem;
-		font-weight: 600;
-		padding: 0.22rem 0.55rem;
-		border-radius: 999px;
-		background: rgba(56, 189, 248, 0.08);
-		border: 1px solid rgba(56, 189, 248, 0.25);
-		color: #7dd3fc;
-	}
-
-	.card-links {
-		display: flex;
-		gap: 1rem;
-		margin-top: auto;
-		padding-top: 0.9rem;
-	}
-
-	.card-links a {
-		font-size: 0.85rem;
-		font-weight: 700;
-		text-decoration: none;
-		color: var(--accent);
-		transition: transform 0.2s ease;
-	}
-
-	.card-links a:hover {
-		transform: translateX(2px);
-	}
-
-	.cta {
-		padding: 1.2rem;
-		display: grid;
-		gap: 0.7rem;
-	}
-
-	.cta p {
-		margin: 0;
-		color: var(--muted);
-	}
-
-	.btn {
-		display: inline-flex;
-		align-items: center;
-		justify-content: center;
-		padding: 0.68rem 1.1rem;
-		border-radius: 0.75rem;
-		font-weight: 700;
-		text-decoration: none;
-		width: fit-content;
-		transition: transform 0.2s ease, box-shadow 0.2s ease;
-	}
-
-	.btn:hover {
-		transform: translateY(-1px);
-	}
-
-	.solid {
-		background: linear-gradient(120deg, var(--grad-a), var(--grad-b));
-		color: #f0f9ff;
-		box-shadow: 0 6px 18px rgba(79, 70, 229, 0.35);
-	}
-
-	.outline {
-		border: 1px solid rgba(148, 163, 184, 0.35);
-		color: #cbd5e1;
-		background: rgba(148, 163, 184, 0.06);
-	}
-
-	@keyframes reveal {
-		from {
-			opacity: 0;
-			transform: translateY(10px);
-		}
-		to {
-			opacity: 1;
-			transform: translateY(0);
-		}
-	}
-
-	@media (max-width: 940px) {
-		.hero {
-			grid-template-columns: 1fr;
-		}
-
-		.projects {
-			grid-template-columns: repeat(2, minmax(0, 1fr));
-		}
-	}
-
-	@media (max-width: 760px) {
-		.stripe,
-		.projects {
-			grid-template-columns: 1fr;
-		}
-	}
-
-	@media (max-width: 640px) {
-		.shell {
-			padding: 1rem 0.75rem 2.5rem;
-		}
-
-		h1 {
-			font-size: 2rem;
-		}
-	}
-</style>

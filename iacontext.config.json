@@ -1,0 +1,12 @@
+{
+  "ignore": [
+    "node_modules",
+    "dist",
+    "build",
+    ".git",
+    "coverage",
+    "*.log",
+    "*.lock",
+    "package-lock.json"
+  ]
+}

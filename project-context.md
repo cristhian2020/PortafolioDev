@@ -1,3 +1,48 @@
+# Projeto: porfolio-dev
+## Estrutura
+```
+astro.config.mjs
+iacontext.config.json
+package-lock.json
+package.json
+README.md
+tailwind.config.mjs
+tsconfig.json
+src/env.d.ts
+src/components/Header.astro
+src/layouts/Layout.astro
+src/pages/index.astro
+src/pages/index.css
+```
+=== astro.config.mjs ===
+
+import { defineConfig } from 'astro/config';
+import tailwind from "@astrojs/tailwind";
+
+import react from "@astrojs/react";
+
+// https://astro.build/config
+export default defineConfig({
+  integrations: [tailwind(), react()]
+});
+
+=== iacontext.config.json ===
+
+{
+  "ignore": [
+    "node_modules",
+    "dist",
+    "build",
+    ".git",
+    "coverage",
+    "*.log",
+    "*.lock",
+    "package-lock.json"
+  ]
+}
+
+=== package-lock.json ===
+
 {
   "name": "porfolio-dev",
   "version": "0.0.1",
@@ -7802,3 +7847,985 @@
     }
   }
 }
+
+
+=== package.json ===
+
+{
+  "name": "porfolio-dev",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/react": "^4.4.2",
+    "@astrojs/tailwind": "^5.1.0",
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.5",
+    "astro": "^4.0.9",
+    "developer-icons": "^7.1.0",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "tailwindcss": "^3.4.0"
+  }
+}
+
+
+=== README.md ===
+
+# Astro Starter Kit: Basics
+
+```sh
+npm create astro@latest -- --template basics
+```
+
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
+[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+
+> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+
+![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
+
+## 🚀 Project Structure
+
+Inside of your Astro project, you'll see the following folders and files:
+
+```text
+/
+├── public/
+│   └── favicon.svg
+├── src/
+│   ├── components/
+│   │   └── Card.astro
+│   ├── layouts/
+│   │   └── Layout.astro
+│   └── pages/
+│       └── index.astro
+└── package.json
+```
+
+Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+
+There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+
+Any static assets, like images, can be placed in the `public/` directory.
+
+## 🧞 Commands
+
+All commands are run from the root of the project, from a terminal:
+
+| Command                   | Action                                           |
+| :------------------------ | :----------------------------------------------- |
+| `npm install`             | Installs dependencies                            |
+| `npm run dev`             | Starts local dev server at `localhost:4321`      |
+| `npm run build`           | Build your production site to `./dist/`          |
+| `npm run preview`         | Preview your build locally, before deploying     |
+| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
+| `npm run astro -- --help` | Get help using the Astro CLI                     |
+
+## 👀 Want to learn more?
+
+Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+
+
+=== tailwind.config.mjs ===
+
+/** @type {import('tailwindcss').Config} */
+export default {
+	content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
+	darkMode: 'class',
+	theme: {
+		extend: {},
+	},
+	plugins: [],
+}
+
+
+=== tsconfig.json ===
+
+{
+  "extends": "astro/tsconfigs/base",
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "jsxImportSource": "react"
+  }
+}
+
+=== src/env.d.ts ===
+
+/// <reference types="astro/client" />
+
+
+=== src/components/Header.astro ===
+
+<header class="topbar">
+    <div class="wrap">
+        <a class="brand" href="#inicio" aria-label="Ir al inicio">
+            <span class="brand-mark">CR</span>
+            <span class="brand-text">Cristhian.dev</span>
+        </a>
+
+        <nav aria-label="Navegación principal">
+            <a href="#sobre-mi">Sobre mí</a>
+            <a href="#experiencia">Experiencia</a>
+            <a href="#stack">Stack</a>
+            <a href="#proyectos">Proyectos</a>
+            <a href="#contacto">Contacto</a>
+        </nav>
+    </div>
+</header>
+
+<style>
+    .topbar {
+        position: sticky;
+        top: 0.7rem;
+        z-index: 30;
+        width: min(1120px, calc(100% - 1.4rem));
+        margin: 0 auto;
+        border-radius: 999px;
+        backdrop-filter: blur(10px);
+        background: rgba(10, 15, 30, 0.78);
+        border: 1px solid rgba(148, 163, 184, 0.16);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+    }
+
+    .wrap {
+        padding: 0.75rem 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+    }
+
+    .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.6rem;
+        text-decoration: none;
+        color: #e8eef8;
+    }
+
+    .brand-mark {
+        width: 2.2rem;
+        height: 2.2rem;
+        display: grid;
+        place-items: center;
+        border-radius: 0.6rem;
+        font-weight: 700;
+        background: linear-gradient(120deg, #0ea5e9, #4f46e5);
+        color: #f0f9ff;
+    }
+
+    .brand-text {
+        font-weight: 700;
+        letter-spacing: 0.02em;
+    }
+
+    nav {
+        display: flex;
+        align-items: center;
+        gap: 1.2rem;
+    }
+
+    nav a {
+        text-decoration: none;
+        color: #94a3b8;
+        font-size: 0.95rem;
+        transition: color 0.2s ease, transform 0.2s ease;
+    }
+
+    nav a:hover {
+        color: #38bdf8;
+        transform: translateY(-1px);
+    }
+
+    @media (max-width: 760px) {
+        .wrap {
+            padding: 0.8rem;
+        }
+
+        .brand-text {
+            display: none;
+        }
+
+        nav {
+            gap: 0.8rem;
+        }
+
+        nav a {
+            font-size: 0.8rem;
+        }
+    }
+</style>
+
+
+=== src/layouts/Layout.astro ===
+
+---
+import Header from "../components/Header.astro"
+
+interface Props {
+	title: string;
+	description?: string;
+}
+
+const {
+	title,
+	description = "Portafolio de Cristhian Rocha — FullStack & Mobile Developer especializado en React, Next.js y React Native."
+} = Astro.props;
+
+// TODO: cambia esta URL por tu dominio real al desplegar
+const siteUrl = "https://cristhianrocha.dev";
+---
+
+<!doctype html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<title>{title}</title>
+		<meta name="description" content={description} />
+		<link rel="canonical" href={siteUrl} />
+
+		<!-- Open Graph (LinkedIn, WhatsApp, etc.) -->
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content={siteUrl} />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content={`${siteUrl}/og-image.png`} />
+		<meta property="og:locale" content="es_ES" />
+
+		<!-- Twitter Card -->
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={`${siteUrl}/og-image.png`} />
+
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+
+		<!-- Tipografías: Sora (texto) + Clash Display (titulares) -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&display=swap"
+			rel="stylesheet"
+		/>
+		<link
+			href="https://api.fontshare.com/v2/css?f[]=clash-display@600,700&display=swap"
+			rel="stylesheet"
+		/>
+	</head>
+	<body>
+		<Header />
+		<slot />
+		<footer class="footer">
+			<div class="footer-wrap">
+				<p>© 2026 Cristhian Rocha · Cochabamba, Bolivia · Hecho con Astro</p>
+				<nav class="socials" aria-label="Redes sociales">
+					<a href="https://github.com/cristhian2020" target="_blank" rel="noopener noreferrer">GitHub</a>
+					<a href="https://www.linkedin.com/in/cristhian-rocha-ferrufino/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+					<a href="mailto:rochacristhian77@gmail.com">Email</a>
+				</nav>
+			</div>
+		</footer>
+	</body>
+</html>
+<style is:global>
+	:root {
+		--bg: #0a0f1e;
+		--bg-soft: #0f172a;
+		--paper: #111c33;
+		--card: #0d1730;
+		--ink: #e8eef8;
+		--muted: #94a3b8;
+		--line: rgba(148, 163, 184, 0.14);
+		--accent: #38bdf8;
+		--accent-2: #34d399;
+		--grad-a: #0ea5e9;
+		--grad-b: #4f46e5;
+	}
+	html {
+		scroll-behavior: smooth;
+		font-family: "Sora", "Segoe UI", sans-serif;
+	}
+	body {
+		margin: 0;
+		min-height: 100vh;
+		color: var(--ink);
+		background:
+			radial-gradient(circle at 88% -15%, rgba(56, 189, 248, 0.16) 0%, transparent 32%),
+			radial-gradient(circle at -5% 12%, rgba(99, 102, 241, 0.18) 0%, transparent 26%),
+			linear-gradient(145deg, var(--bg), var(--bg-soft));
+		background-attachment: fixed;
+	}
+	a {
+		color: inherit;
+	}
+	* {
+		box-sizing: border-box;
+	}
+
+	/* Accesibilidad: foco visible para navegación por teclado */
+	a:focus-visible,
+	button:focus-visible {
+		outline: 2px solid var(--accent);
+		outline-offset: 3px;
+		border-radius: 0.35rem;
+	}
+
+	/* Accesibilidad: respeto a usuarios con movimiento reducido */
+	@media (prefers-reduced-motion: reduce) {
+		html {
+			scroll-behavior: auto;
+		}
+		*,
+		*::before,
+		*::after {
+			animation-duration: 0.01ms !important;
+			animation-iteration-count: 1 !important;
+			transition-duration: 0.01ms !important;
+		}
+	}
+
+	/* Footer */
+	.footer {
+		width: min(1120px, calc(100% - 2rem));
+		margin: 0 auto;
+		padding: 0 0 2rem;
+	}
+	.footer-wrap {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 1rem;
+		flex-wrap: wrap;
+		padding: 1rem 1.2rem;
+		border-top: 1px solid rgba(148, 163, 184, 0.18);
+	}
+	.footer p {
+		margin: 0;
+		font-size: 0.85rem;
+		color: var(--muted);
+	}
+	.socials {
+		display: flex;
+		gap: 1.1rem;
+	}
+	.socials a {
+		font-size: 0.85rem;
+		font-weight: 600;
+		text-decoration: none;
+		color: var(--muted);
+		transition: color 0.2s ease;
+	}
+	.socials a:hover {
+		color: var(--accent);
+	}
+
+	@media (max-width: 640px) {
+		.footer-wrap {
+			flex-direction: column;
+			text-align: center;
+		}
+	}
+</style>
+
+
+=== src/pages/index.astro ===
+
+---
+import Layout from '../layouts/Layout.astro';
+import { 
+  TypeScript, 
+  React as ReactIcon, 
+  NextJs, 
+  NodeJs, 
+  Python, 
+  PostgreSQL, 
+  Supabase,
+  Git 
+} from "developer-icons";
+ import  "./index.css"
+ 
+const stack = [
+  { name: 'React / Next.js', Icon: ReactIcon },
+  { name: 'React Native / Expo', Icon: ReactIcon },
+  { name: 'TypeScript', Icon: TypeScript },
+  { name: 'Node.js / Express', Icon: NodeJs },
+  { name: 'FastAPI / Python', Icon: Python },
+  { name: 'PostgreSQL / MySQL', Icon: PostgreSQL },
+  { name: 'Supabase / Firebase', Icon: Supabase },
+  { name: 'Git / Scrum', Icon: Git }
+];
+
+const experience = [
+	{
+		company: 'Sistema LLC',
+		place: 'Cliente en EE.UU. · Remoto',
+		role: 'FullStack Developer',
+		period: 'Mar 2026 — Jun 2026',
+		points: [
+			'Sistema de gestión de facturación con Next.js y Firebase: seguimiento de pagos en tiempo real y reportes financieros.',
+			'Autenticación con roles y permisos para proteger la información de la empresa.'
+		]
+	},
+	{
+		company: 'Sistema Dental',
+		place: 'Freelance · Cochabamba, Bolivia',
+		role: 'FullStack Developer',
+		period: 'Dic 2025 — Feb 2026',
+		points: [
+			'Sistema completo para clínica dental: historias clínicas, citas médicas y módulo de pagos con Next.js, Supabase y Express.'
+		],
+		achievement: 'Reduje en 40% el tiempo administrativo de recepción y optimicé la agenda de especialistas.'
+	},
+	{
+		company: 'Smaigo',
+		place: 'Cochabamba, Bolivia',
+		role: 'FullStack / Mobile Developer',
+		period: 'Ago 2025 — Feb 2026',
+		points: [
+			'App móvil en React Native con Redux para estado complejo y sincronización de datos en tiempo real.',
+			'Backend con Firebase y Express; panel administrativo en Next.js aplicando Atomic Design.'
+		]
+	},
+	{
+		company: 'Zekiri',
+		place: 'Cochabamba, Bolivia',
+		role: 'FullStack Developer',
+		period: 'Ago 2024 — Ago 2025',
+		points: [
+			'Lideré el frontend de múltiples proyectos con Next.js: arquitectura de componentes y flujo de datos.',
+			'Trabajo en equipos ágiles bajo Scrum: planning, dailies y retrospectivas.'
+		],
+		achievement: 'Consultas ~30% más rápidas tras optimizar Supabase y Firebase.'
+	}
+];
+
+// TODO: apunta cada proyecto a su repo/demo real cuando los tengas públicos
+const projects = [
+	{
+		title: 'Sistema de Gestión Dental',
+		description: 'Plataforma para clínica dental: historias clínicas, agenda de citas y pagos en un solo sistema.',
+		result: 'Reducción del 40% en el tiempo administrativo de recepción.',
+		tags: ['Next.js', 'Supabase', 'Express'],
+		demo: '#',
+		repo: 'https://github.com/cristhian2020'
+	},
+	{
+		title: 'Ecommerce GuitarLA',
+		description: 'Tienda online con carrito de compras, catálogo dinámico y pasarela de pago.',
+		result: 'Arquitectura headless escalable con contenido gestionado desde Strapi.',
+		tags: ['Next.js', 'Strapi', 'TypeScript'],
+		demo: '#',
+		repo: 'https://github.com/cristhian2020'
+	},
+	{
+		title: 'Sistema de Parqueo UMSS',
+		description: 'Control de ingresos y egresos vehiculares para la universidad, con reportes de ocupación.',
+		result: 'Digitalización completa del registro manual del parqueo.',
+		tags: ['PHP', 'MySQL', 'JavaScript'],
+		demo: '#',
+		repo: 'https://github.com/cristhian2020'
+	}
+];
+---
+
+<Layout title="Cristhian Rocha | Full Stack & Mobile Developer">
+	<main class="shell">
+		<section class="hero" id="inicio">
+			<div class="hero-copy">
+				<p class="tag">FULL STACK & MOBILE DEVELOPER</p>
+				<h1>Arquitectura, código y producto en una sola ejecución.</h1>
+				<p>
+					Construyo aplicaciones web y móviles reales para clínicas, comercios y
+					sistemas universitarios. Especializado en React, Next.js y React Native:
+					de la estrategia del MVP al despliegue en producción.
+				</p>
+				<div class="actions">
+					<a class="btn solid" href="#proyectos">Explorar proyectos</a>
+					<a class="btn outline" href="#contacto">Agendar llamada</a>
+				</div>
+			</div>
+
+			<aside class="hero-panel">
+				<p class="mini">Disponibilidad</p>
+				<h2>Inmediata</h2>
+				<ul>
+					<li>2+ años construyendo producto real para clientes.</li>
+					<li>Web + mobile: React, Next.js y React Native.</li>
+					<li>Cochabamba, Bolivia · Remoto · Inglés B1.</li>
+				</ul>
+			</aside>
+		</section>
+
+		<section class="stripe" id="sobre-mi">
+			<article>
+				<h3>Cómo trabajo</h3>
+				<p>
+					Analizo objetivos de negocio, priorizo entregables y construyo soluciones
+					técnicas sostenibles. Cada decisión busca acelerar producto sin comprometer
+					calidad.
+				</p>
+			</article>
+			<article>
+				<h3>Fortalezas</h3>
+				<p>
+					Frontend con React y Next.js, mobile con React Native, backend con Node.js
+					y FastAPI, y bases de datos SQL y NoSQL bien modeladas.
+				</p>
+			</article>
+		</section>
+
+		<section class="block" id="experiencia">
+			<h2>Experiencia laboral</h2>
+			<ol class="timeline">
+				{experience.map((job) => (
+					<li>
+						<p class="tl-period">{job.period}</p>
+						<h3>{job.role} · {job.company}</h3>
+						<p class="tl-place">{job.place}</p>
+						<ul class="tl-points">
+							{job.points.map((point) => <li>{point}</li>)}
+						</ul>
+						{job.achievement && <p class="impact">{job.achievement}</p>}
+					</li>
+				))}
+			</ol>
+		</section>
+
+		<section class="block" id="stack">
+			<h2>Stack principal</h2>
+			<div class="tech">
+				{stack.map((item) => (
+					<span>
+						{item.Icon && <item.Icon size={24} />}
+						{item.name}
+					</span>
+				))}
+			</div>
+		</section>
+
+		<section class="block" id="proyectos">
+			<h2>Casos destacados</h2>
+			<div class="projects">
+				{projects.map((project, i) => (
+					<article class="card" style={`--delay:${i * 120}ms`}>
+						<p class="index">0{i + 1}</p>
+						<h3>{project.title}</h3>
+						<p>{project.description}</p>
+						<p class="impact">{project.result}</p>
+						<ul class="tags">
+							{project.tags.map((tag) => <li>{tag}</li>)}
+						</ul>
+						<div class="card-links">
+							<a href={project.demo} target="_blank" rel="noopener noreferrer">Ver demo →</a>
+							<a href={project.repo} target="_blank" rel="noopener noreferrer">Código →</a>
+						</div>
+					</article>
+				))}
+			</div>
+		</section>
+
+		<section class="cta" id="contacto">
+			<h2>¿Buscas un perfil full stack para impulsar tu producto?</h2>
+			<p>
+				Cuéntame el contexto de tu proyecto y te propongo una ruta técnica clara.
+			</p>
+			<div class="actions">
+				<a class="btn solid" href="mailto:rochacristhian77@gmail.com">Escribirme por email</a>
+				<a class="btn outline" href="/cv-cristian.pdf" target="_blank" rel="noopener noreferrer">Descargar CV</a>
+			</div>
+		</section>
+	</main>
+</Layout>
+
+
+
+
+=== src/pages/index.css ===
+
+.shell {
+		max-width: 1120px;
+		margin: 0 auto;
+		padding: 1.3rem 1rem 3rem;
+		display: grid;
+		gap: 1rem;
+	}
+
+	.hero,
+	.block,
+	.cta,
+	.stripe article {
+		background: var(--paper);
+		border-radius: 1rem;
+		border: 1px solid var(--line);
+		box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+	}
+
+	.hero {
+		padding: clamp(1.2rem, 3vw, 2rem);
+		display: grid;
+		grid-template-columns: 1.5fr 1fr;
+		gap: 1rem;
+		animation: reveal 500ms ease both;
+	}
+
+	.hero-copy {
+		display: grid;
+		gap: 0.8rem;
+	}
+
+	.tag {
+		margin: 0;
+		font-size: 0.78rem;
+		font-weight: 700;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+		color: var(--accent);
+	}
+
+	h1 {
+		margin: 0;
+		font-size: clamp(1.9rem, 5vw, 3.3rem);
+		line-height: 1.02;
+		max-width: 14ch;
+		font-family: "Clash Display", "Sora", sans-serif;
+	}
+
+	.hero-copy p {
+		margin: 0;
+		color: var(--muted);
+		max-width: 58ch;
+	}
+
+	.actions {
+		display: flex;
+		gap: 0.7rem;
+		flex-wrap: wrap;
+	}
+
+	.hero-panel {
+		background: linear-gradient(160deg, #312e81, #1e1b4b);
+		border: 1px solid rgba(129, 140, 248, 0.35);
+		color: #e0e7ff;
+		border-radius: 0.9rem;
+		padding: 1rem;
+		display: flex;
+		flex-direction: column;
+		gap: 0.4rem;
+	}
+
+	.hero-panel ul {
+		margin: 0.2rem 0 0;
+		padding-left: 1.1rem;
+		display: grid;
+		gap: 0.3rem;
+	}
+
+	.hero-panel li::marker {
+		color: var(--accent);
+	}
+
+	.mini {
+		margin: 0;
+		font-size: 0.8rem;
+		text-transform: uppercase;
+		opacity: 0.75;
+	}
+
+	.hero-panel h2 {
+		margin: 0;
+		font-size: 1.7rem;
+	}
+
+	.stripe {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 1rem;
+	}
+
+	.stripe article {
+		padding: 1.1rem;
+	}
+
+	.stripe h3 {
+		margin: 0 0 0.45rem;
+		font-size: 1.15rem;
+	}
+
+	.stripe p {
+		margin: 0;
+		color: var(--muted);
+	}
+
+	.block {
+		padding: 1.2rem;
+	}
+
+	.block h2,
+	.cta h2 {
+		margin: 0 0 0.7rem;
+		font-size: 1.45rem;
+	}
+
+	/* Timeline de experiencia */
+	.timeline {
+		list-style: none;
+		margin: 0.4rem 0 0;
+		padding: 0;
+		position: relative;
+		display: grid;
+		gap: 1.5rem;
+	}
+
+	.timeline::before {
+		content: "";
+		position: absolute;
+		left: 7px;
+		top: 8px;
+		bottom: 8px;
+		width: 2px;
+		background: linear-gradient(180deg, var(--grad-a), var(--grad-b));
+		opacity: 0.55;
+	}
+
+	.timeline > li {
+		position: relative;
+		padding-left: 2rem;
+	}
+
+	.timeline > li::before {
+		content: "";
+		position: absolute;
+		left: 0;
+		top: 4px;
+		width: 10px;
+		height: 10px;
+		border-radius: 50%;
+		background: var(--paper);
+		border: 3px solid var(--accent);
+		box-shadow: 0 0 10px rgba(56, 189, 248, 0.55);
+	}
+
+	.tl-period {
+		margin: 0;
+		font-size: 0.75rem;
+		font-weight: 700;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+		color: var(--accent);
+	}
+
+	.timeline h3 {
+		margin: 0.2rem 0 0.1rem;
+		font-size: 1.08rem;
+	}
+
+	.tl-place {
+		margin: 0 0 0.45rem;
+		font-size: 0.85rem;
+		color: var(--muted);
+		opacity: 0.85;
+	}
+
+	.tl-points {
+		margin: 0;
+		padding-left: 1.1rem;
+		display: grid;
+		gap: 0.3rem;
+		color: var(--muted);
+	}
+
+	.tl-points li::marker {
+		color: var(--accent);
+	}
+
+	.tech {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.55rem;
+	}
+
+	.tech span {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.4rem;
+		padding: 0.45rem 0.8rem;
+		border-radius: 999px;
+		background: rgba(56, 189, 248, 0.07);
+		border: 1px solid rgba(56, 189, 248, 0.28);
+		color: #bae6fd;
+		font-weight: 700;
+		font-size: 0.92rem;
+	}
+
+	.projects {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 0.8rem;
+	}
+
+	.card {
+		padding: 1rem;
+		border: 1px solid var(--line);
+		border-radius: 0.9rem;
+		background: var(--card);
+		animation: reveal 600ms ease both;
+		animation-delay: var(--delay);
+		display: flex;
+		flex-direction: column;
+		transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+	}
+
+	.card:hover {
+		transform: translateY(-4px);
+		box-shadow: 0 14px 28px rgba(0, 0, 0, 0.45);
+		border-color: rgba(56, 189, 248, 0.45);
+	}
+
+	.card h3 {
+		margin: 0.25rem 0 0.5rem;
+	}
+
+	.card p {
+		margin: 0;
+		color: var(--muted);
+	}
+
+	.index {
+		font-size: 0.75rem;
+		letter-spacing: 0.1em;
+		font-weight: 700;
+		text-transform: uppercase;
+		color: var(--accent);
+	}
+
+	.impact {
+		margin-top: 0.55rem !important;
+		color: var(--accent-2) !important;
+		font-weight: 700;
+	}
+
+	.tags {
+		list-style: none;
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.35rem;
+		margin: 0.8rem 0 0;
+		padding: 0;
+	}
+
+	.tags li {
+		font-size: 0.72rem;
+		font-weight: 600;
+		padding: 0.22rem 0.55rem;
+		border-radius: 999px;
+		background: rgba(56, 189, 248, 0.08);
+		border: 1px solid rgba(56, 189, 248, 0.25);
+		color: #7dd3fc;
+	}
+
+	.card-links {
+		display: flex;
+		gap: 1rem;
+		margin-top: auto;
+		padding-top: 0.9rem;
+	}
+
+	.card-links a {
+		font-size: 0.85rem;
+		font-weight: 700;
+		text-decoration: none;
+		color: var(--accent);
+		transition: transform 0.2s ease;
+	}
+
+	.card-links a:hover {
+		transform: translateX(2px);
+	}
+
+	.cta {
+		padding: 1.2rem;
+		display: grid;
+		gap: 0.7rem;
+	}
+
+	.cta p {
+		margin: 0;
+		color: var(--muted);
+	}
+
+	.btn {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		padding: 0.68rem 1.1rem;
+		border-radius: 0.75rem;
+		font-weight: 700;
+		text-decoration: none;
+		width: fit-content;
+		transition: transform 0.2s ease, box-shadow 0.2s ease;
+	}
+
+	.btn:hover {
+		transform: translateY(-1px);
+	}
+
+	.solid {
+		background: linear-gradient(120deg, var(--grad-a), var(--grad-b));
+		color: #f0f9ff;
+		box-shadow: 0 6px 18px rgba(79, 70, 229, 0.35);
+	}
+
+	.outline {
+		border: 1px solid rgba(148, 163, 184, 0.35);
+		color: #cbd5e1;
+		background: rgba(148, 163, 184, 0.06);
+	}
+
+	@keyframes reveal {
+		from {
+			opacity: 0;
+			transform: translateY(10px);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+
+	@media (max-width: 940px) {
+		.hero {
+			grid-template-columns: 1fr;
+		}
+
+		.projects {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+	}
+
+	@media (max-width: 760px) {
+		.stripe,
+		.projects {
+			grid-template-columns: 1fr;
+		}
+	}
+
+	@media (max-width: 640px) {
+		.shell {
+			padding: 1rem 0.75rem 2.5rem;
+		}
+
+		h1 {
+			font-size: 2rem;
+		}
+	}
+
