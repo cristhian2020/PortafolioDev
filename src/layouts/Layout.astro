@@ -660,6 +660,191 @@ const siteUrl = "https://portafolio-dev-red-phi.vercel.app/";
     gap: 0.8rem;
   }
 
+  /* === Proyectos con imágenes === */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+
+.project-card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 1rem;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    animation: reveal 600ms ease both;
+    animation-delay: var(--delay);
+}
+
+.project-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    border-color: rgba(56, 189, 248, 0.3);
+}
+
+/* === Wrapper de imagen === */
+.project-image-wrapper {
+    position: relative;
+    aspect-ratio: 16/9;
+    overflow: hidden;
+    background: var(--bg-soft);
+}
+
+.project-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.project-card:hover .project-image {
+    transform: scale(1.05);
+}
+
+/* Placeholder cuando no hay imagen */
+.project-image-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    background: linear-gradient(135deg, var(--bg-soft), var(--paper));
+    color: var(--muted);
+    font-size: 0.85rem;
+}
+
+.project-image-placeholder span:first-child {
+    font-size: 3rem;
+    opacity: 0.5;
+}
+
+/* === Overlay con tecnologías === */
+.project-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1rem;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.project-card:hover .project-overlay {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.project-tags-overlay {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+}
+
+.tag-overlay {
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 0.2rem 0.6rem;
+    border-radius: 999px;
+    background: rgba(56, 189, 248, 0.2);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+
+/* === Contenido de la tarjeta === */
+.project-content {
+    padding: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.project-index {
+    margin: 0;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+}
+
+.project-title {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.project-description {
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.project-impact {
+    margin: 0;
+    padding: 0.5rem 0.75rem;
+    background: rgba(52, 211, 153, 0.08);
+    border-radius: 0.5rem;
+    color: var(--accent-2);
+    font-size: 0.85rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.impact-icon {
+    font-size: 1rem;
+}
+
+.project-links {
+    display: flex;
+    gap: 1.2rem;
+    margin-top: 0.5rem;
+    padding-top: 0.8rem;
+    border-top: 1px solid var(--line);
+}
+
+.project-link {
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-decoration: none;
+    color: var(--accent);
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.project-link:hover {
+    transform: translateX(4px);
+    color: #60a5fa;
+}
+
+/* === Responsive === */
+@media (max-width: 1024px) {
+    .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 640px) {
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .project-image-wrapper {
+        aspect-ratio: 16/10;
+    }
+    
+    .project-content {
+        padding: 1rem;
+    }
+}
+
   .card {
     padding: 1rem;
     border: 1px solid var(--line);
