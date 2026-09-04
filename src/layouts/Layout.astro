@@ -825,6 +825,14 @@ const siteUrl = "https://portafolio-dev-red-phi.vercel.app/";
 }
 
 /* === Responsive === */
+@media (hover: none), (max-width: 768px) {
+    .project-overlay {
+        opacity: 1;
+        transform: translateY(0);
+        background: linear-gradient(to top, rgba(10, 15, 30, 0.95) 0%, rgba(10, 15, 30, 0.5) 65%, transparent 100%);
+    }
+}
+
 @media (max-width: 1024px) {
     .projects-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -979,6 +987,49 @@ const siteUrl = "https://portafolio-dev-red-phi.vercel.app/";
     border: 1px solid rgba(148, 163, 184, 0.35);
     color: #cbd5e1;
     background: rgba(148, 163, 184, 0.06);
+  }
+
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    align-items: center;
+  }
+
+  .whatsapp {
+    background: #25d366;
+    color: #ffffff;
+    box-shadow: 0 6px 18px rgba(37, 211, 102, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+  }
+
+  .whatsapp:hover {
+    background: #20bd5a;
+    box-shadow: 0 8px 22px rgba(37, 211, 102, 0.45);
+    color: #ffffff;
+  }
+
+  .status-dot {
+    display: inline-block;
+    width: 0.65rem;
+    height: 0.65rem;
+    border-radius: 50%;
+    background: #10b981;
+    box-shadow: 0 0 10px #10b981;
+    animation: status-pulse 2s infinite ease-in-out;
+    vertical-align: middle;
+    margin-right: 0.35rem;
+  }
+
+  @keyframes status-pulse {
+    0%, 100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.45;
+      transform: scale(1.2);
+    }
   }
 
   @keyframes reveal {
